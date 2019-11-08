@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import Style from './StyleCadastro';
 import firebase from '../firebase/firebase';
 
@@ -41,35 +41,39 @@ function Cadastro({ navigation }){
     }
     
     return(
-        <View style={Style.container}>
-            <Text style={Style.titulo}>
-                Faça seu cadastro:
-            </Text>
-            
-            <View style={Style.viewContainer}>
-                <Text>Email:</Text>
-                <TextInput 
-                    onChangeText = {texto => setEmail(texto)}                    
-                    value={email} 
-                    placeholder="Digite aqui seu email:"
-                    />
-            </View>
+        <ImageBackground source={require('../assets/bg.png')} style={{width: '100%', height: '100%'}}>
+            <View style={Style.container}>
+                <Text style={Style.titulo}>
+                    Faça seu cadastro:
+                </Text>
+                
+                <View style={Style.viewContainer}>
+                    <Text style={Style.text}>Email:</Text>
+                    <TextInput 
+                        onChangeText = {texto => setEmail(texto)}                    
+                        value={email} 
+                        placeholder="Digite aqui seu email:"
+                        style={Style.input}
+                        />
+                </View>
 
-            <View style={Style.viewContainer}>
-                <Text>Senha:</Text>
-                <TextInput 
-                    onChangeText={senha => setSenha(senha)} 
-                    value={senha} 
-                    placeholder="Digite aqui sua senha:" 
-                    secureTextEntry={true}
-                    />
+                <View style={Style.viewContainer}>
+                    <Text style={Style.text}>Senha:</Text>
+                    <TextInput 
+                        onChangeText={senha => setSenha(senha)} 
+                        value={senha} 
+                        placeholder="Digite aqui sua senha:" 
+                        secureTextEntry={true}
+                        style={Style.input}
+                        />
+                </View>
+                
+                <TouchableOpacity onPress={cadastrar} style={Style.button}>
+                    <Text>Cadastrar</Text>
+                </TouchableOpacity>
+                <Text onPress={() => navigation.navigate('Login')}>Já tenho uma conta. Quero logar.</Text>
             </View>
-            
-            <TouchableOpacity onPress={cadastrar} style={Style.button}>
-                <Text>Cadastrar</Text>
-            </TouchableOpacity>
-            <Text onPress={() => navigation.navigate('Login')}>Já tenho uma conta. Quero logar.</Text>
-        </View>
+        </ImageBackground>
     );
 }
 

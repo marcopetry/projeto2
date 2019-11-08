@@ -16,15 +16,28 @@ const styles = StyleSheet.create({
 
     viewContainer: {
         marginVertical: 10,
-        borderColor: '#000'
+        borderColor: '#000',        
+    },
+
+    text: {
+      fontSize: 24
+    },
+
+    input: {
+      backgroundColor: '#fff',
+      borderRadius: 10,
+      borderColor: '#000',
+      borderWidth: 1,
     },
 
     button: {
       alignItems: 'center',
-      backgroundColor: 'green',
-      borderRadius: 5,
+      backgroundColor: 'white',
+      borderRadius: 10,
       padding: 10,
-      marginVertical: 10
+      marginTop: 20,
+      borderColor: '#000',
+      borderWidth: 1,
     },
     
   })

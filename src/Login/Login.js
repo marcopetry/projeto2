@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import Style from './StyleLogin';
 import firebase from '../firebase/firebase';
 
@@ -39,27 +39,30 @@ function Login({ navigation }){
     }
     
     return(
+      <ImageBackground source={require('../assets/bg.png')} style={{width: '100%', height: '100%'}}>
         <View style={Style.container}>
             <Text style={Style.titulo}>
                 Realize o login:
             </Text>
             
             <View style={Style.viewContainer}>
-                <Text>Email:</Text>
+                <Text style={Style.text}>Email:</Text>
                 <TextInput 
                     onChangeText = {texto => setEmail(texto)}                    
                     value={email} 
                     placeholder="Digite aqui seu email:"
+                    style={Style.input}
                     />
             </View>
 
             <View style={Style.viewContainer}>
-                <Text>Senha:</Text>
+                <Text style={Style.text}>Senha:</Text>
                 <TextInput 
                     onChangeText={senha => setSenha(senha)} 
                     value={senha} 
                     placeholder="Digite aqui sua senha:" 
                     secureTextEntry={true}
+                    style={Style.input}
                     />
             </View>
             
@@ -68,6 +71,7 @@ function Login({ navigation }){
             </TouchableOpacity>
             <Text onPress={() => navigation.navigate('Cadastro')}>Não tenho conta. Criar uma conta.</Text>
         </View>
+      </ImageBackground>
     );
 }
 
